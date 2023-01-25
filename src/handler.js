@@ -80,9 +80,9 @@ const addBookHandler = (request, h) => {
     return response;
   }
 };
-//getAllBookHandler
+//getAllBooksHandler 
 // menampilkan semua data buku
-const getAllBookHandler = (request, h) => {
+const getAllBooksHandler  = (request, h) => {
   const {name, reading, finished} = request.query;
  
   let book;
@@ -148,12 +148,12 @@ const getAllBookHandler = (request, h) => {
   }
  
   if (name) {
-    const filterName = books.filter((book) => book.name.toLowerCase().includes(name.toLowerCase())).map((book) => ({
+    const filterByName  = books.filter((book) => book.name.toLowerCase().includes(name.toLowerCase())).map((book) => ({
       'id': book.id,
       'name': book.name,
       'publisher': book.publisher,
     }));
-    book = filterName;
+    book = filterByName ;
     return h.response({
       status: 'success',
       data: {
@@ -304,4 +304,4 @@ const deleteBookHandler = (request, h) => {
   return response;
 };
  
-module.exports = { addBookHandler, getAllBookHandler, getBookByIdHandler, updateBookHandler, deleteBookHandler};
+module.exports = { addBookHandler, getAllBooksHandler , getBookByIdHandler, updateBookHandler, deleteBookHandler};
